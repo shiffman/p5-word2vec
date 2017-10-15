@@ -9,6 +9,48 @@ function preload() {
 
 function setup() {
   noCanvas();
+  prepData();
+
+  let d1 = distance(colorDict['red'], colorDict['green']);
+  let d2 = distance(colorDict['red'], colorDict['pink']);
+  console.log(d1, d2);
+  console.log(d1 > d2);
+
+  console.log(closest(colorDict['red']));
+
+  console.log(closest(color(150,60,150)));
+
+
+}
+
+
+function closest(color, limit = 10) {
+
+  if (color instanceof p5.Color) {
+    color = {
+      vector: createVector(red(color), green(color), blue(color)),
+      color: color
+    }
+  }
+
+  let keys = Object.keys(colorDict);
+  let closest = [];
+
+  // New ES6 arrow syntax!!!!!
+  keys.sort((a, b) => {
+    let d1 = distance(color, colorDict[a]);
+    let d2 = distance(color, colorDict[b]);
+    return d1 - d2;
+  });
+
+  for (let i = 0; i < limit; i++) {
+    closest.push(keys[i]);
+  }
+  return closest;
+}
+
+
+function prepData() {
   let colors = colorData.colors;
   for (let i = 0; i < colors.length; i++) {
     let key = colors[i].color;
@@ -20,6 +62,10 @@ function setup() {
     };
     colorDict[key] = value;
   }
+}
+
+function distance(color1, color2) {
+  return p5.Vector.dist(color1.vector, color2.vector);
 }
 
 function meanV(vectors) {
