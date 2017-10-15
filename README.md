@@ -1,2 +1,4 @@
 # p5-word2vec
-Thanks to the brilliance of @aparrish, some examples around word vectors with p5.js
+
+Code based on tutorial by Allison Parrish (@aparrish):
+https://gist.github.com/aparrish/2f562e3737544cf29aaf1af30362f469
