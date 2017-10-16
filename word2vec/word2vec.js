@@ -5,7 +5,7 @@ class Word2Vec {
 
   static magnitude(a) {
     let sum = a.reduce((sum, val) => {
-      return sum + val*val;  
+      return sum + val*val;
     }, 0);
     return Math.sqrt(sum);
   }
@@ -20,6 +20,21 @@ class Word2Vec {
       return sum + a * v2[i];
     }, 0);
     return sum / (this.magnitude(v1) * this.magnitude(v2)); //magnitude is 1 for all feature vectors
+  }
+
+  // Add two word vectors
+  static add(v1, v2) {
+    return v1.map((a, i) => a + v2[i]);
+  }
+
+  // Subtract two word vectors
+  static subtract(v1, v2) {
+    return v1.map((a, i) => a - v2[i]);
+  }
+
+  // Average of two word vectors
+  static average(v1, v2) {
+    return v1.map((a, i) => (a + v2[i]) * 0.5);
   }
 
   static nearest(word, n=10) {
@@ -41,11 +56,8 @@ class Word2Vec {
       words.push({word: key, distance: d});
     }
     words.sort((a, b) => {
-      return b.distance - a.distance; 
+      return b.distance - a.distance;
     });
     return words.slice(0, n);
   }
 }
-
-
-
