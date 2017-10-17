@@ -19,9 +19,9 @@ function setup() {
   let button2 = select("#submit2");
   let results2 = select("#results2");
 
-  let isto1 = select("isto1");
-  let isto2 = select("isto2");
-  let isto3 = select("isto3");
+  let isto1 = select("#isto1");
+  let isto2 = select("#isto2");
+  let isto3 = select("#isto3");
   let button3 = select("#submit3");
   let results3 = select("#results3");
 
@@ -51,6 +51,27 @@ function setup() {
     }
     let middle = Word2Vec.average(v1, v2);
     results2.html(findNearest(middle, 10));
+  });
+
+  button3.mousePressed(() => {
+    let is1 = wordVecs[isto1.value()];
+    let to1 = wordVecs[isto2.value()];
+    let is2 = wordVecs[isto3.value()];
+    if (!is1) {
+      results3.html("No word vector for first word");
+      return;
+    }
+    if (!to1) {
+      results3.html("No word vector for second word");
+      return;
+    }
+    if (!is2) {
+      results3.html("No word vector for third word");
+      return;
+    }
+    let difference = Word2Vec.subtract(to1, is1);
+    let to2 = Word2Vec.add(is2, difference);
+    results3.html(findNearest(to2, 10));
   });
 }
 
