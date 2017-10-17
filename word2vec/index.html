@@ -11,14 +11,46 @@
   <!--<script src="data/wordvecs1000.js"></script>-->
   <script src="word2vec.js"></script>
 	<script src="sketch.js"></script>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/master.css">
 </head>
 <body>
-  <h1>Word2Vec</h1>
+	<div class="container">
+		<div class="page-header">
+			<h1>Word2Vec</h1>
+		</div>
 
-  <p>
-    <input value="rainbow" id="word"></input> 
-    <button id="submit">find nearest words</button>
-  </p>
-  <p id = "results"></p>
+		<div class="row" id="loadHide">
+			<div class="col-lg-4">
+				<p>
+					<input type="text" value="rainbow" id="word"></input>
+					<button id="submit" class="btn btn-primary">is similar to ...</button>
+				</p>
+				<p id="results"></p>
+			</div>
+
+			<div class="col-lg-4">
+				<p>
+					Between
+					<input type="text" value="rainbow" id="between1"></input> and
+					<input type="text" value="unicorn" id="between2"></input>
+					<button id="submit" class="btn btn-primary">is ...</button>
+				</p>
+				<p id="results2"></p>
+			</div>
+
+			<div class="col-lg-4">
+				<p>
+					<input type="text" value="rainbow" id="isto1"></input> is to
+					<input type="text" value="unicorn" id="isto2"></input> as
+					<input type="text" value="kitten" id="isto3"></input>
+					<button id="submit" class="btn btn-primary">is to ...</button>
+				</p>
+				<p id="results3"></p>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

@@ -7,17 +7,17 @@ let wordVecs;
 function setup() {
   createCanvas(100, 100);
 
+  let loadHide = select("#loadHide");
+  loadHide.hide();
+
   let wordInput = select('#word');
   let button = select('#submit');
-  wordInput.hide();
-  button.hide();
   let results = select('#results');
 
   loadJSON('data/wordvecs10000.json', (data) => {
     wordVecs = data.vectors;
     console.log('loaded');
-    wordInput.show();
-    button.show();
+    loadHide.show();
     noLoop();
     noCanvas();
   });
