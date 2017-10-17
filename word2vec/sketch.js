@@ -10,20 +10,20 @@ function setup() {
   let loadHide = select("#loadHide");
   loadHide.hide();
 
-  let wordInput = select('#word');
-  let button = select('#submit');
-  let results = select('#results');
+  let nearWordInput = select('#nearword');
+  let nearButton = select('#submit');
+  let nearResults = select('#results');
 
-  let between1 = select("#between1");
-  let between2 = select("#between2");
-  let button2 = select("#submit2");
-  let results2 = select("#results2");
+  let betweenWordInput1 = select("#between1");
+  let betweenWordInput2 = select("#between2");
+  let betweenButton = select("#submit2");
+  let betweenResults = select("#results2");
 
-  let isto1 = select("#isto1");
-  let isto2 = select("#isto2");
-  let isto3 = select("#isto3");
-  let button3 = select("#submit3");
-  let results3 = select("#results3");
+  let addInput1 = select("#isto1");
+  let addInput2 = select("#isto2");
+  let addInput3 = select("#isto3");
+  let addButton = select("#submit3");
+  let addResults = select("#results3");
 
   loadJSON('data/wordvecs10000.json', (data) => {
     wordVecs = data.vectors;
@@ -33,45 +33,45 @@ function setup() {
     noCanvas();
   });
 
-  button.mousePressed(() => {
-    let word = wordInput.value();
-    results.html(findNearest(word, 10));
+  nearButton.mousePressed(() => {
+    let word = nearWordInput.value();
+    nearResults.html(findNearest(word, 10));
   });
 
-  button2.mousePressed(() => {
-    let v1 = wordVecs[between1.value()];
-    let v2 = wordVecs[between2.value()];
+  betweenButton.mousePressed(() => {
+    let v1 = wordVecs[betweenWordInput1.value()];
+    let v2 = wordVecs[betweenWordInput2.value()];
     if (!v1) {
-      results2.html("No word vector for first word");
+      betweenResults.html("No word vector for first word");
       return;
     }
     if (!v2) {
-      results2.html("No word vector for second word");
+      betweenResults.html("No word vector for second word");
       return;
     }
     let middle = Word2Vec.average(v1, v2);
-    results2.html(findNearest(middle, 10));
+    betweenResults.html(findNearest(middle, 10));
   });
 
-  button3.mousePressed(() => {
-    let is1 = wordVecs[isto1.value()];
-    let to1 = wordVecs[isto2.value()];
-    let is2 = wordVecs[isto3.value()];
+  addButton.mousePressed(() => {
+    let is1 = wordVecs[addInput1.value()];
+    let to1 = wordVecs[addInput2.value()];
+    let is2 = wordVecs[addInput3.value()];
     if (!is1) {
-      results3.html("No word vector for first word");
+      addResults.html("No word vector for first word");
       return;
     }
     if (!to1) {
-      results3.html("No word vector for second word");
+      addResults.html("No word vector for second word");
       return;
     }
     if (!is2) {
-      results3.html("No word vector for third word");
+      addResults.html("No word vector for third word");
       return;
     }
     let difference = Word2Vec.subtract(to1, is1);
     let to2 = Word2Vec.add(is2, difference);
-    results3.html(findNearest(to2, 10));
+    addResults.html(findNearest(to2, 10));
   });
 }
 
