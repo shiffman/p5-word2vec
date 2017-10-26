@@ -2,7 +2,7 @@
 
 ## Python Environment
 
-Set up a python environment with [gensim](https://radimrehurek.com/gensim/) installed. Here are some ([more detailed instructions](https://github.com/shiffman/A2Z-F17/wiki/Python-Environment-for-LSTM-example)) related to a python environment for tensorflow (but you only need gensim for this tutorial).
+Set up a python environment with [gensim](https://radimrehurek.com/gensim/) installed. Here are some [more detailed instructions](https://github.com/shiffman/A2Z-F17/wiki/Python-Environment-for-LSTM-example) related to a python environment for tensorflow (but you only need gensim for this tutorial).
 
 ```
 pip install gensim
