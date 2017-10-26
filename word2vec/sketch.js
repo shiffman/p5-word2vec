@@ -26,6 +26,7 @@ function setup() {
   let addResults = select("#results3");
 
   loadJSON('data/wordvecs10000.json', (data) => {
+  //loadJSON('data/midsummer_vectors.json', (data) => {
     wordVecs = data.vectors;
     console.log('loaded');
     loadHide.show();
